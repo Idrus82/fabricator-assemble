@@ -625,7 +625,9 @@ var assemble = function () {
 		// template using Handlebars
 		var source = wrapPage(pageContent, assembly.layouts[pageMatter.data.layout || options.layout]),
 			context = buildContext(pageMatter.data),
-			template = Handlebars.compile(source);
+			template = Handlebars.compile(source, {                
+                preventIndent: true
+            });
 
 		// redefine file path if dest front-matter variable is defined
 		if (pageMatter.data.dest) {
